@@ -90,7 +90,7 @@
             <label for="dreamdata" class="col-sm-1 control-label">内容：</label>
             <div class="col-sm-11">
                 <textarea id="dreamdata" class="form-control"
-                          v-model="dreamdata"
+                          v-model="dreamdata" v-on:input="change"
                           placeholder="你梦见什么了？"> </textarea>
             </div>
         </div>
@@ -98,7 +98,7 @@
             <label for="dreamproblem" class="col-sm-1 control-label">问题：</label>
             <div class="col-sm-11">
                 <textarea type="text" id="dreamproblem" class="form-control"
-                          v-model="dreamproblem"
+                          v-model="dreamproblem" v-on:input="change"
                           placeholder="你遇见了什么问题？"> </textarea>
             </div>
         </div>
@@ -106,7 +106,7 @@
             <label for="dreamsummary" class="col-sm-1 control-label">总结：</label>
             <div class="col-sm-11">
                 <textarea type="text" id="dreamsummary" class="form-control"
-                          v-model="dreamsummary"
+                          v-model="dreamsummary" v-on:input="change"
                           placeholder="这次获得了什么经验？"></textarea>
             </div>
         </div>
@@ -116,18 +116,18 @@
                 <div class="dreamall">
                     <p>
                         <b>时间：</b>{{ dreamtime }}
-                        <br><br>
+                        <br>
                         <b>方法：</b>{{ dreammethod }}
-                        <br><br>
+                        <br>
                         <b>类型：</b>{{ dreamtype }}
-                        <br><br>
+                        <br>
                         <b>梦名：</b>{{ dreamname }}
                         <br><br>
-                        <b>内容：</b><br>{{ dreamdata }}
+                        <b>内容：</b><br><span v-html="dreamdata_html">{{dreamdata_html}}</span>
                         <br><br>
-                        <b>问题：</b><br>{{ dreamproblem }}
+                        <b>问题：</b><br><span v-html="dreamproblem_html">{{dreamproblem_html}}</span>
                         <br><br>
-                        <b>总结：</b><br>{{ dreamsummary }}
+                        <b>总结：</b><br><span v-html="dreamsummary_html">{{dreamsummary_html}}</span>
                     </p>
                 </div>
             </div>
@@ -157,8 +157,14 @@
         d = IsBig(d)
         return y + "-" + m + "-" + d
     }
-
-
+    function gethtml(strContent) {
+        console.log(strContent)
+        strContent = String(strContent);
+        strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+        strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
+        strContent = strContent.replace(/\s/g, ' '); //空格处理
+        return strContent;
+    }
     new Vue({
         el: "#mydiv",
         data: {
@@ -169,28 +175,21 @@
             dreamdata: "",
             dreamproblem: "",
             dreamsummary: "",
+           dreamdata_html:"",
+            dreamproblem_html:"",
+            dreamsummary_html:"",
         },
-        computed: {
-            dreamall: function () {
-                return `时间：${this.dreamtime}
-
-类型：${this.dreamtype}
-
-梦名：${this.dreamname}
-
-方法：${this.dreammethod}
-
-内容：
-${this.dreamdata}
-
-问题：
-${this.dreamproblem}
-
-总结：
-${this.dreamsummary}
-                `
+        computed:{
+            //dreamdata_html: gethtml(this.dreamdata),
+            //dreamproblem_html: gethtml(this.dreamproblem),
+           //dreamsummary_html: gethtml(this.dreamsummary),
+        },
+        methods:{
+            change:function () {
+                this.dreamdata_html = this.dreamdata.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+                this.dreamproblem_html = this.dreamproblem.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+                this.dreamsummary_html = this.dreamsummary.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
             }
-
         }
     });
 </script>
@@ -203,6 +202,7 @@ ${this.dreamsummary}
         $("#dreamall").flexText();
         setInterval(function () {
             $("#dreamall").change()
+            $("#dreamdata").change()
         }, 500);
     });
 </script>
