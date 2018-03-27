@@ -9,11 +9,12 @@
     <!--<script src="js/jquery-3.2.1.js"></script>-->
     <!--<script src="js/bootstrap.js"></script>-->
     <!--<script src="js/vue.js"></script>-->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet">
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
-    <link rel="shortcut icon"type="image/x-icon"href="favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
 
     <title>记梦模版</title>
     <script src="js/jquery.flexText.js"></script>
@@ -51,7 +52,7 @@
         </div>
     </div>
 </nav>
-<div id="mydiv" data-spy="scroll" data-target="#navbar-example" data-offset="0" >
+<div id="mydiv" data-spy="scroll" data-target="#navbar-example" data-offset="0">
     <form class="form-horizontal" role="form">
         <div class="form-group" id="time">
             <label for="dreamtime" class="col-sm-1 control-label">时间：</label>
@@ -63,60 +64,90 @@
         <div class="form-group" id="type">
             <label for="dreamtype" class="col-sm-1 control-label">类型：</label>
             <div class="col-sm-2">
-                <input type="text" id="dreamtype" class="form-control" v-model="dreamtype"
+                <input type="text" id="dreamtype" class="form-control"
+                       v-model="dreamtype"
                        placeholder="清明梦">
             </div>
         </div>
         <div class="form-group" id="name">
             <label for="dreamname" class="col-sm-1 control-label">梦名：</label>
             <div class="col-sm-2">
-                <input type="text" id="dreamname" class="form-control" v-model="dreamname"
+                <input type="text" id="dreamname" class="form-control"
+                       v-model="dreamname"
                        placeholder="梦的名字">
             </div>
         </div>
         <div class="form-group" id="method">
             <label for="dreammethod" class="col-sm-1 control-label">方法：</label>
             <div class="col-sm-2">
-                <input type="text" id="dreammethod" class="form-control" v-model="dreammethod"
+                <input type="text" id="dreammethod" class="form-control"
+                       v-model="dreammethod"
                        placeholder="梦中知梦、音频入梦、无梦">
             </div>
         </div>
         <div class="form-group" id="data">
             <label for="dreamdata" class="col-sm-1 control-label">内容：</label>
             <div class="col-sm-11">
-                <textarea id="dreamdata" class="form-control" v-model="dreamdata"
+                <textarea id="dreamdata" class="form-control"
+                          v-model="dreamdata"
                           placeholder="你梦见什么了？"> </textarea>
             </div>
         </div>
         <div class="form-group" id="problem">
             <label for="dreamproblem" class="col-sm-1 control-label">问题：</label>
             <div class="col-sm-11">
-                <textarea type="text" id="dreamproblem" class="form-control" v-model="dreamproblem"
+                <textarea type="text" id="dreamproblem" class="form-control"
+                          v-model="dreamproblem"
                           placeholder="你遇见了什么问题？"> </textarea>
             </div>
         </div>
         <div class="form-group" id="summary">
             <label for="dreamsummary" class="col-sm-1 control-label">总结：</label>
             <div class="col-sm-11">
-                <textarea type="text" id="dreamsummary" class="form-control" v-model="dreamsummary"
+                <textarea type="text" id="dreamsummary" class="form-control"
+                          v-model="dreamsummary"
                           placeholder="这次获得了什么经验？"></textarea>
             </div>
         </div>
         <div class="form-group" id="all">
             <label for="dreamall" class="col-sm-1 control-label">结果：</label>
             <div class="col-sm-11">
-                <textarea type="text" id="dreamall" class="form-control" v-model="dreamall"
+                <textarea type="text" id="dreamall" class="form-control"
+                          v-model="dreamall"
                           placeholder="这次获得了什么经验？" readonly></textarea>
             </div>
         </div>
     </form>
 </div>
-<div align="center" style="margin-bottom: 10px;"><b>访问次数：</b><a href="http://www.amazingcounters.com"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3221441&c=9664636" alt="AmazingCounters.com"></a></div>
+<div align="center" style="margin-bottom: 10px;"><b>访问次数：</b><a
+        href="http://www.amazingcounters.com"><img border="0"
+                                                   src="http://cc.amazingcounters.com/counter.php?i=3221441&c=9664636"
+                                                   alt="AmazingCounters.com"></a>
+</div>
 <script>
-    new Vue({
+    function IsBig(m) {
+        if (m < 10) {
+            return "0" + m;
+        } else {
+            return m
+        }
+    }
+
+    function getDate() {
+        date = new Date();
+        y = date.getFullYear();
+        m = date.getMonth() + 1;
+        d = date.getDate();
+        m = IsBig(m)
+        d = IsBig(d)
+        return y + "-" + m + "-" + d
+    }
+
+
+     new Vue({
         el: "#mydiv",
         data: {
-            dreamtime: "2018-03-27",
+            dreamtime: getDate(),
             dreamtype: "",
             dreamname: "",
             dreammethod: "",
@@ -149,32 +180,15 @@ ${this.dreamsummary}
     });
 </script>
 <script>
-    function IsBig(m) {
-    if (m < 10) {
-        return "0" + m;
-    } else {
-        return m
-    }
-}
 
-function getDate() {
-    date = new Date();
-    y = date.getFullYear();
-    m = date.getMonth() + 1;
-    d = date.getDate();
-    m = IsBig(m)
-    d = IsBig(d)
-    return y + "-" + m + "-" + d
-}
     $(function () {
-        $("#dreamtime").val(getDate())
         $("#dreamdata").flexText();
         $("#dreamproblem").flexText();
         $("#dreamsummary").flexText();
         $("#dreamall").flexText();
         setInterval(function () {
             $("#dreamall").change()
-        },500);
+        }, 500);
     });
 </script>
 </body>
