@@ -149,7 +149,25 @@ ${this.dreamsummary}
     });
 </script>
 <script>
+    function IsBig(m) {
+    if (m < 10) {
+        return "0" + m;
+    } else {
+        return m
+    }
+}
+
+function getDate() {
+    date = new Date();
+    y = date.getFullYear();
+    m = date.getMonth() + 1;
+    d = date.getDate();
+    m = IsBig(m)
+    d = IsBig(d)
+    return y + "-" + m + "-" + d
+}
     $(function () {
+        $("#dreamtime").val(getDate())
         $("#dreamdata").flexText();
         $("#dreamproblem").flexText();
         $("#dreamsummary").flexText();
