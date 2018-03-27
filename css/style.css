@@ -52,3 +52,17 @@ textarea,
      * Ensure that typography, padding, border-width (and optionally min-height) are identical across textarea & pre
      */
 }
+
+.dreamall {
+    border:groove 1px #b3b3b3;
+-moz-border-radius: 8px;
+-webkit-border-radius: 8px;
+border-radius: 8px;
+    padding: 10px 15px;
+
+    width: 100%;
+    height: auto;
+    word-wrap:break-word;
+    word-break:break-all;
+    overflow: hidden;
+}
