@@ -61,6 +61,14 @@
                        v-model="dreamtime">
             </div>
         </div>
+        <div class="form-group" id="method">
+            <label for="dreammethod" class="col-sm-1 control-label">方法：</label>
+            <div class="col-sm-2">
+                <input type="text" id="dreammethod" class="form-control"
+                       v-model="dreammethod"
+                       placeholder="梦中知梦、音频入梦、无梦">
+            </div>
+        </div>
         <div class="form-group" id="type">
             <label for="dreamtype" class="col-sm-1 control-label">类型：</label>
             <div class="col-sm-2">
@@ -77,14 +85,7 @@
                        placeholder="梦的名字">
             </div>
         </div>
-        <div class="form-group" id="method">
-            <label for="dreammethod" class="col-sm-1 control-label">方法：</label>
-            <div class="col-sm-2">
-                <input type="text" id="dreammethod" class="form-control"
-                       v-model="dreammethod"
-                       placeholder="梦中知梦、音频入梦、无梦">
-            </div>
-        </div>
+
         <div class="form-group" id="data">
             <label for="dreamdata" class="col-sm-1 control-label">内容：</label>
             <div class="col-sm-11">
@@ -115,18 +116,18 @@
                 <div class="dreamall">
                     <p>
                         <b>时间：</b>{{ dreamtime }}
-                    <br><br>
-                    <b>类型：</b>{{dreamtype}}
-                    <br><br>
-                    <b>梦名：</b>{{dreamname}}
-                    <br><br>
-                    <b>方法：</b>{{dreammethod}}
-                    <br><br>
-                    <b>内容：</b><br>{{dreamdata}}
-                    <br><br>
-                    <b>问题：</b><br>{{dreamproblem}}
-                    <br><br>
-                    <b>总结：</b><br>{{dreamsummary}}
+                        <br><br>
+                        <b>方法：</b>{{ dreammethod }}
+                        <br><br>
+                        <b>类型：</b>{{ dreamtype }}
+                        <br><br>
+                        <b>梦名：</b>{{ dreamname }}
+                        <br><br>
+                        <b>内容：</b><br>{{ dreamdata }}
+                        <br><br>
+                        <b>问题：</b><br>{{ dreamproblem }}
+                        <br><br>
+                        <b>总结：</b><br>{{ dreamsummary }}
                     </p>
                 </div>
             </div>
@@ -158,7 +159,7 @@
     }
 
 
-     new Vue({
+    new Vue({
         el: "#mydiv",
         data: {
             dreamtime: getDate(),
