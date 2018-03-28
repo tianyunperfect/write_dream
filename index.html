@@ -111,7 +111,7 @@
             </div>
         </div>
         <div class="form-group" id="all">
-            <label for="dreamall" class="col-sm-1 control-label">结果：</label>
+            <label for="" class="col-sm-1 control-label">结果：</label>
             <div class="col-sm-11">
                 <div class="dreamall">
                     <p>
@@ -175,7 +175,7 @@
             dreamdata: "",
             dreamproblem: "",
             dreamsummary: "",
-           dreamdata_html:"",
+            dreamdata_html:"",
             dreamproblem_html:"",
             dreamsummary_html:"",
         },
@@ -186,6 +186,7 @@
         },
         methods:{
             change:function () {
+                console.log(this.dreamdata);
                 this.dreamdata_html = this.dreamdata.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
                 this.dreamproblem_html = this.dreamproblem.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
                 this.dreamsummary_html = this.dreamsummary.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
@@ -199,11 +200,11 @@
         $("#dreamdata").flexText();
         $("#dreamproblem").flexText();
         $("#dreamsummary").flexText();
-        $("#dreamall").flexText();
-        setInterval(function () {
-            $("#dreamall").change()
-            $("#dreamdata").change()
-        }, 500);
+        //$("#dreamall").flexText();
+        //setInterval(function () {
+            //$("#dreamall").change()
+            //$("#dreamdata").change()
+        //}, 500);
     });
 </script>
 </body>
