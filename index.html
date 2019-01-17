@@ -1,20 +1,19 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--<link rel="stylesheet" href="css/bootstrap.css">-->
     <!--<script src="js/jquery-3.2.1.js"></script>-->
     <!--<script src="js/bootstrap.js"></script>-->
     <!--<script src="js/vue.js"></script>-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.16/vue.min.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
     <title>记梦模版</title>
     <script src="js/jquery.flexText.js"></script>
@@ -25,187 +24,169 @@
         }
     </style>
 </head>
+
 <body class="container">
-<nav id="navbar-example" class="navbar navbar-default navbar-static"
-     role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button class="navbar-toggle" type="button" data-toggle="collapse"
-                    data-target=".bs-js-navbar-scrollspy">
+    <nav id="navbar-example" class="navbar navbar-default navbar-static" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-js-navbar-scrollspy">
                 <span class="sr-only">切换导航</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">记梦模版</a>
-        </div>
-        <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
-            <ul class="nav navbar-nav">
-                <li><a href="#time">时间</a></li>
-                <li><a href="#type">类型</a></li>
-                <li><a href="#name">梦名</a></li>
-                <li><a href="#method">方法</a></li>
-                <li><a href="#data">内容</a></li>
-                <li><a href="#problem">问题</a></li>
-                <li><a href="#summary">总结</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<div id="mydiv" data-spy="scroll" data-target="#navbar-example" data-offset="0">
-    <form class="form-horizontal" role="form">
-        <div class="form-group" id="time">
-            <label for="dreamtime" class="col-sm-1 control-label">时间：</label>
-            <div class="col-sm-2">
-                <input type="date" class="form-control select" id="dreamtime"
-                       v-model="dreamtime">
+                <a class="navbar-brand" href="#">记梦模版</a>
+            </div>
+            <div class="collapse navbar-collapse bs-js-navbar-scrollspy">
+                <ul class="nav navbar-nav">
+                    <li><a href="#time">时间</a></li>
+                    <li><a href="#type">类型</a></li>
+                    <li><a href="#name">梦名</a></li>
+                    <li><a href="#method">方法</a></li>
+                    <li><a href="#data">内容</a></li>
+                    <li><a href="#problem">问题</a></li>
+                    <li><a href="#summary">总结</a></li>
+                </ul>
             </div>
         </div>
-        <div class="form-group" id="method">
-            <label for="dreammethod" class="col-sm-1 control-label">方法：</label>
-            <div class="col-sm-2">
-                <input type="text" id="dreammethod" class="form-control"
-                       v-model="dreammethod"
-                       placeholder="梦中知梦、音频入梦、无梦">
-            </div>
-        </div>
-        <div class="form-group" id="type">
-            <label for="dreamtype" class="col-sm-1 control-label">类型：</label>
-            <div class="col-sm-2">
-                <input type="text" id="dreamtype" class="form-control"
-                       v-model="dreamtype"
-                       placeholder="清明梦">
-            </div>
-        </div>
-        <div class="form-group" id="name">
-            <label for="dreamname" class="col-sm-1 control-label">梦名：</label>
-            <div class="col-sm-2">
-                <input type="text" id="dreamname" class="form-control"
-                       v-model="dreamname"
-                       placeholder="梦的名字">
-            </div>
-        </div>
-
-        <div class="form-group" id="data">
-            <label for="dreamdata" class="col-sm-1 control-label">内容：</label>
-            <div class="col-sm-11">
-                <textarea id="dreamdata" class="form-control"
-                          v-model="dreamdata" v-on:input="change"
-                          placeholder="你梦见什么了？"> </textarea>
-            </div>
-        </div>
-        <div class="form-group" id="problem">
-            <label for="dreamproblem" class="col-sm-1 control-label">问题：</label>
-            <div class="col-sm-11">
-                <textarea type="text" id="dreamproblem" class="form-control"
-                          v-model="dreamproblem" v-on:input="change"
-                          placeholder="你遇见了什么问题？"> </textarea>
-            </div>
-        </div>
-        <div class="form-group" id="summary">
-            <label for="dreamsummary" class="col-sm-1 control-label">总结：</label>
-            <div class="col-sm-11">
-                <textarea type="text" id="dreamsummary" class="form-control"
-                          v-model="dreamsummary" v-on:input="change"
-                          placeholder="这次获得了什么经验？"></textarea>
-            </div>
-        </div>
-        <div class="form-group" id="all">
-            <label for="" class="col-sm-1 control-label">结果：</label>
-            <div class="col-sm-11">
-                <div class="dreamall">
-                    <p>
-                        <b>时间：</b>{{ dreamtime }}
-                        <br>
-                        <b>方法：</b>{{ dreammethod }}
-                        <br>
-                        <b>类型：</b>{{ dreamtype }}
-                        <br>
-                        <b>梦名：</b>{{ dreamname }}
-                        <br><br>
-                        <b>内容：</b><br><span v-html="dreamdata_html">{{dreamdata_html}}</span>
-                        <br><br>
-                        <b>问题：</b><br><span v-html="dreamproblem_html">{{dreamproblem_html}}</span>
-                        <br><br>
-                        <b>总结：</b><br><span v-html="dreamsummary_html">{{dreamsummary_html}}</span>
-                    </p>
+    </nav>
+    <div id="mydiv" data-spy="scroll" data-target="#navbar-example" data-offset="0">
+        <form class="form-horizontal" role="form">
+            <div class="form-group" id="time">
+                <label for="dreamtime" class="col-sm-1 control-label">时间：</label>
+                <div class="col-sm-2">
+                    <input type="date" class="form-control select" id="dreamtime" v-model="dreamtime">
                 </div>
             </div>
-        </div>
-    </form>
-</div>
-<div align="center" style="margin-bottom: 10px;"><b>访问次数：</b><a
-        href="http://www.amazingcounters.com"><img border="0"
-                                                   src="http://cc.amazingcounters.com/counter.php?i=3221441&c=9664636"
-                                                   alt="AmazingCounters.com"></a>
-</div>
-<script>
-    function IsBig(m) {
-        if (m < 10) {
-            return "0" + m;
-        } else {
-            return m
-        }
-    }
+            <div class="form-group" id="method">
+                <label for="dreammethod" class="col-sm-1 control-label">方法：</label>
+                <div class="col-sm-2">
+                    <input type="text" id="dreammethod" class="form-control" v-model="dreammethod" placeholder="梦中知梦、音频入梦、无梦">
+                </div>
+            </div>
+            <div class="form-group" id="type">
+                <label for="dreamtype" class="col-sm-1 control-label">类型：</label>
+                <div class="col-sm-2">
+                    <input type="text" id="dreamtype" class="form-control" v-model="dreamtype" placeholder="清明梦">
+                </div>
+            </div>
+            <div class="form-group" id="name">
+                <label for="dreamname" class="col-sm-1 control-label">梦名：</label>
+                <div class="col-sm-2">
+                    <input type="text" id="dreamname" class="form-control" v-model="dreamname" placeholder="梦的名字">
+                </div>
+            </div>
 
-    function getDate() {
-        date = new Date();
-        y = date.getFullYear();
-        m = date.getMonth() + 1;
-        d = date.getDate();
-        m = IsBig(m)
-        d = IsBig(d)
-        return y + "-" + m + "-" + d
-    }
-    function gethtml(strContent) {
-        console.log(strContent)
-        strContent = String(strContent);
-        strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
-        strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
-        strContent = strContent.replace(/\s/g, ' '); //空格处理
-        return strContent;
-    }
-    new Vue({
-        el: "#mydiv",
-        data: {
-            dreamtime: getDate(),
-            dreamtype: "",
-            dreamname: "",
-            dreammethod: "",
-            dreamdata: "",
-            dreamproblem: "",
-            dreamsummary: "",
-            dreamdata_html:"",
-            dreamproblem_html:"",
-            dreamsummary_html:"",
-        },
-        computed:{
-            //dreamdata_html: gethtml(this.dreamdata),
-            //dreamproblem_html: gethtml(this.dreamproblem),
-           //dreamsummary_html: gethtml(this.dreamsummary),
-        },
-        methods:{
-            change:function () {
-                console.log(this.dreamdata);
-                this.dreamdata_html = this.dreamdata.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-                this.dreamproblem_html = this.dreamproblem.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
-                this.dreamsummary_html = this.dreamsummary.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+            <div class="form-group" id="data">
+                <label for="dreamdata" class="col-sm-1 control-label">内容：</label>
+                <div class="col-sm-11">
+                    <textarea id="dreamdata" class="form-control" v-model="dreamdata" v-on:input="change" placeholder="你梦见什么了？"> </textarea>
+                </div>
+            </div>
+            <div class="form-group" id="problem">
+                <label for="dreamproblem" class="col-sm-1 control-label">问题：</label>
+                <div class="col-sm-11">
+                    <textarea type="text" id="dreamproblem" class="form-control" v-model="dreamproblem" v-on:input="change" placeholder="你遇见了什么问题？"> </textarea>
+                </div>
+            </div>
+            <div class="form-group" id="summary">
+                <label for="dreamsummary" class="col-sm-1 control-label">总结：</label>
+                <div class="col-sm-11">
+                    <textarea type="text" id="dreamsummary" class="form-control" v-model="dreamsummary" v-on:input="change" placeholder="这次获得了什么经验？"></textarea>
+                </div>
+            </div>
+            <div class="form-group" id="all">
+                <label for="" class="col-sm-1 control-label">结果：</label>
+                <div class="col-sm-11">
+                    <div class="dreamall">
+                        <p>
+                            <b>时间：</b>{{ dreamtime }}
+                            <br>
+                            <b>方法：</b>{{ dreammethod }}
+                            <br>
+                            <b>类型：</b>{{ dreamtype }}
+                            <br>
+                            <b>梦名：</b>{{ dreamname }}
+                            <br><br>
+                            <b>内容：</b><br><span v-html="dreamdata_html">{{dreamdata_html}}</span>
+                            <br><br>
+                            <b>问题：</b><br><span v-html="dreamproblem_html">{{dreamproblem_html}}</span>
+                            <br><br>
+                            <b>总结：</b><br><span v-html="dreamsummary_html">{{dreamsummary_html}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div align="center" style="margin-bottom: 10px;"><b>访问次数：</b>
+        <a href="http://www.amazingcounters.com"><img border="0" src="http://cc.amazingcounters.com/counter.php?i=3221441&c=9664636" alt="AmazingCounters.com"></a>
+    </div>
+    <script>
+        function IsBig(m) {
+            if (m < 10) {
+                return "0" + m;
+            } else {
+                return m
             }
         }
-    });
-</script>
-<script>
 
-    $(function () {
-        $("#dreamdata").flexText();
-        $("#dreamproblem").flexText();
-        $("#dreamsummary").flexText();
-        //$("#dreamall").flexText();
-        //setInterval(function () {
-            //$("#dreamall").change()
-            //$("#dreamdata").change()
-        //}, 500);
-    });
-</script>
+        function getDate() {
+            date = new Date();
+            y = date.getFullYear();
+            m = date.getMonth() + 1;
+            d = date.getDate();
+            m = IsBig(m)
+            d = IsBig(d)
+            return y + "-" + m + "-" + d
+        }
+
+        function gethtml(strContent) {
+            console.log(strContent)
+            strContent = String(strContent);
+            strContent = strContent.replace(/\r\n/g, '<br/>'); //IE9、FF、chrome
+            strContent = strContent.replace(/\n/g, '<br/>'); //IE7-8
+            strContent = strContent.replace(/\s/g, ' '); //空格处理
+            return strContent;
+        }
+        new Vue({
+            el: "#mydiv",
+            data: {
+                dreamtime: getDate(),
+                dreamtype: "",
+                dreamname: "",
+                dreammethod: "",
+                dreamdata: "",
+                dreamproblem: "",
+                dreamsummary: "",
+                dreamdata_html: "",
+                dreamproblem_html: "",
+                dreamsummary_html: "",
+            },
+            computed: {
+                //dreamdata_html: gethtml(this.dreamdata),
+                //dreamproblem_html: gethtml(this.dreamproblem),
+                //dreamsummary_html: gethtml(this.dreamsummary),
+            },
+            methods: {
+                change: function() {
+                    console.log(this.dreamdata);
+                    this.dreamdata_html = this.dreamdata.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+                    this.dreamproblem_html = this.dreamproblem.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+                    this.dreamsummary_html = this.dreamsummary.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, ' ');
+                }
+            }
+        });
+    </script>
+    <script>
+        $(function() {
+            $("#dreamdata").flexText();
+            $("#dreamproblem").flexText();
+            $("#dreamsummary").flexText();
+
+
+        });
+    </script>
 </body>
+
 </html>
